@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  line-height: 1.1;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text {
+  @apply
+  text-white
+}
+
+.method > * {
+  @apply 
+  p-4
+  bg-gray-700
+  rounded
+  justify-center
+  items-center
+  text-center
+  text-gray-200
+  hover:bg-gray-700/90
+  active:border-2 
+  transform
+  my-2
+}
+
+.btn {
+  @apply 
+  p-4
+  bg-green-400/20
+  rounded-3xl
+  text-green-400/90
+  hover:bg-green-400/30
+  active:text-green-400/10
+
+}
+
+.photo__mini__icons {
+  @apply
+  w-16 
+  h-16
+  bg-cover
+}
+
+.page {
+  @apply 
+  flex
+  flex-col 
+  justify-center 
+  items-center 
+  p-2
+  bg-gray-900/90
+  min-h-screen
+}
