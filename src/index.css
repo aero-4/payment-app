@@ -16,7 +16,7 @@
 }
 
 .method > * {
-  @apply 
+  @apply
   p-4
   bg-gray-700
   rounded
@@ -26,8 +26,9 @@
   text-gray-200
   hover:bg-gray-700/90
   active:border-2 
-  transform
-  my-2
+  min-w-xs
+  justify-center
+  items-center
 }
 
 .btn {
@@ -43,9 +44,12 @@
 
 .photo__mini__icons {
   @apply
-  w-16 
+  w-16
   h-16
-  bg-cover
+  justify-center
+  items-center
+  my-auto
+  mx-auto
 }
 
 .page {

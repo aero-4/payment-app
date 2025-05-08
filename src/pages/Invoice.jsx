@@ -47,8 +47,8 @@ function InvoiceLevelStart({setInvoiceData, invoiceData, handleContinueInvoice})
 
 
     return (
-        <div>
-            <div className='flex flex-row gap-1 method flex-wrap items-center justify-center'>
+        <div className='flex flex-col gap-4 justify-center items-center'>
+            <div className='flex flex-row gap-2 method flex-wrap justify-center items-center cursor-pointer'>
                 <div name='sbp'
                      onClick={updateInvoiceData}>
                     <img src={svgSbp} alt="sbp" className='photo__mini__icons'/>
@@ -62,20 +62,20 @@ function InvoiceLevelStart({setInvoiceData, invoiceData, handleContinueInvoice})
                 <div name='trc20'
                      onClick={updateInvoiceData}>
                     <img src={usdtSvg} alt="" className='photo__mini__icons'/>
-                    <h1>TRC20</h1>
+                    <h1>USDT TRC20</h1>
                 </div>
                 <div name='tron'
                      onClick={updateInvoiceData}>
                     <img src={tronPng} alt="" className='photo__mini__icons'/>
-                    <h1>Tron</h1>
+                    <h1>TRON TRC20</h1>
                 </div>
             </div>
 
-            <div className='flex flex-col gap-2'>
-                <button className='btn text-center'
-                        onClick={handleContinueInvoice}>Продолжить
-                </button>
-            </div>
+            <button className='btn text-center max-w-50'
+                    onClick={handleContinueInvoice}>
+                Продолжить
+            </button>
+
         </div>
     );
 }
@@ -86,33 +86,34 @@ function InvoiceLevelEnd({data}) {
     data = {summa: 100, date: '01.01.2020 19:17:01', id: '128daeqw8-839189as-8cz98c-32188', url: 'https://example.com'}
     document.href = `/invoice/${data.id}`
 
-    useEffect(() => {
-        const isMount = false;
-
-        if (!isMount) {
-            for (const i = 0; i < count_req; i++) {
-                setTimeout(async () => {
-                    const data = await fetchCheckInvoice(data)
-                    if (data.result) {
-                        console.log('Платеж прошел')
-                        return
-                    }
-                }, time_sleep)
-            }
-        }
-
-        isMount = true;
-    })
+    // useEffect(() => {
+    //     const isMount = false;
+    //
+    //     if (!isMount) {
+    //         for (const i = 0; i < count_req; i++) {
+    //             setTimeout(async () => {
+    //                 const data = await fetchCheckInvoice(data)
+    //                 if (data.result) {
+    //                     console.log('Платеж прошел')
+    //                     return
+    //                 }
+    //             }, time_sleep)
+    //         }
+    //     }
+    //
+    //     isMount = true;
+    // })
 
     return (
         <>
-            <div className='flex flex-col gap-1 cursor-pointer'>
+            <div className='flex flex-col gap-1'>
                 <h1 className='text'>Id: {data.id}</h1>
                 <h1 className='text'>Сумма: {data.amount}</h1>
                 <h1 className='text'>Дата: {data.date}</h1>
-                <a href={data.url}>
-                    <button className='btn'>Оплатить</button>
-                </a>
+                <button className='btn'
+                        onClick={() => document.location.href = 'https://t.me/'}>
+                    Оплатить
+                </button>
             </div>
         </>
     );
@@ -135,7 +136,7 @@ function Invoice({props}) {
     return (
         <>
             <div className='page'>
-                <div className='flex flex-col gap-7 bg-gray-900 w-full p-6 rounded max-w-120'>
+                <div className='flex flex-col bg-gray-900 w-auto p-12 rounded'>
                     {level === 0 &&
                         <InvoiceLevelStart setInvoiceData={setInvoiceData} invoiceData={invoiceData} handleContinueInvoice={handleContinueInvoice}/>}
                     {level === 1 && <InvoiceLevelEnd/>}
